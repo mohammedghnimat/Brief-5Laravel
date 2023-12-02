@@ -39,7 +39,7 @@ class DashboardUserController extends Controller
     ]);
 
     // Find the user by ID
-    $user = User::find($id);
+    $user = Auth::user();
 
     if (!$user) {
         return redirect()->route('user.dashboard')->with('error', 'User not found.');
