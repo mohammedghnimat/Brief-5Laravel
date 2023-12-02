@@ -201,4 +201,11 @@ Route::get('/admin/creatings/locations',function(){
 
 // Admin Dashboard
 Route::get('/admin/dashboard', [AdminDashboardController::class, 'statistics'])->name('admin.dashboard.statistics');
+<<<<<<< HEAD
 ///////////////////////////////////////////////
+=======
+
+
+
+// malek is the best
+// >>>>>>> fc534728eba5825335562cf4bb5ebdedd0dd1510
