@@ -16,7 +16,7 @@ class DashboardUserController extends Controller
     {
         // Retrieve user's bookings, reviews, and other relevant information
         // $users = Auth::user();
-        $user = User::first();
+        $user = Auth::user();
         return view('user.dashboard', compact('user'));
     }
 
@@ -39,7 +39,7 @@ class DashboardUserController extends Controller
     ]);
 
     // Find the user by ID
-    $user = User::find($id);
+    $user = Auth::user();
 
     if (!$user) {
         return redirect()->route('user.dashboard')->with('error', 'User not found.');
@@ -96,7 +96,7 @@ class DashboardUserController extends Controller
 public function bookedProperties()
 {
     // $user = Auth::user(); // Assuming you are using authentication
-    $user = User::first();
+    $user = Auth::user();
 
     // Fetch the bookings along with related properties and users
     $bookings = Booking::select('properties.*', 'bookings.*','bookings.id as booking_id', 'users.*')
@@ -118,7 +118,7 @@ public function delete($id)
 
  public function userReviews()
     {
-        $user = User::first();
+        $user = Auth::user();
        $reviews = Review::where('renter_id', $user->id)->get();
 
         return view('user.reviews', compact('reviews', 'user'));

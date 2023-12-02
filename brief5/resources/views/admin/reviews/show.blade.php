@@ -16,7 +16,14 @@
         <p><strong>ID:</strong> {{ $review->id }}</p>
         <p><strong>Property:</strong> {{ $review->property->name }}</p>
         <p><strong>Renter:</strong> {{ $review->renter->name }}</p>
-        <p><strong>Rating:</strong> {{ $review->rating }}</p>
+        <p><strong>Rating:</strong>
+            @for($i = 1; $i <= 5; $i++)
+                        @if($i <= $review->rating)
+                            <span class=" text-warning">&#9733;</span>
+                        @else
+                            <span class=" text-secondary">&#9734;</span>
+                        @endif
+                    @endfor</p>
         <p><strong>Comment:</strong> {{ $review->comment }}</p>
 
         <!-- Add more details based on your Review model fields -->

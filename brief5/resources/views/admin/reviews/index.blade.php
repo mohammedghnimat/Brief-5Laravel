@@ -24,7 +24,14 @@
                     <!-- Add more table cells based on your Review model fields -->
                     <td class="py-2 px-4 border-b">{{ $review->property->name }}</td>
                     <td class="py-2 px-4 border-b">{{ $review->renter->name }}</td>
-                    <td class="py-2 px-4 border-b">{{ $review->rating }}</td>
+                    <td class="py-2 px-4 border-b">
+                        @for($i = 1; $i <= 5; $i++)
+                        @if($i <= $review->rating)
+                            <span class=" text-warning">&#9733;</span>
+                        @else
+                            <span class=" text-secondary">&#9734;</span>
+                        @endif
+                    @endfor</td>
                     <td class="py-2 px-4 border-b">
                         <a href="{{ route('admin.reviews.show', $review) }}" class="text-blue-500 hover:underline">View</a>
                         {{-- <a href="{{ route('admin.reviews.edit', $review) }}" class="text-yellow-500 hover:underline ml-2">Edit</a> --}}

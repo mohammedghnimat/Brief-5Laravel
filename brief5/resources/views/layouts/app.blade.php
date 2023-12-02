@@ -11,7 +11,7 @@
     <!-- Navbar -->
     <nav class="bg-blue-500 p-4">
         <div class="container mx-auto flex justify-between items-center">
-            <div class="text-white font-semibold text-lg">{{ $navbarTitle ?? 'Admin Dashboard' }}</div>
+            <div class="text-white font-semibold text-lg">{{ $navbarTitle ?? 'Apart' }}</div>
             <!-- Add your navbar items or user information here -->
         </div>
     </nav>
@@ -21,7 +21,7 @@
         <!-- Sidebar -->
         <aside class="bg-blue-400 text-white w-64 min-h-screen">
             <div class="">
-                <h2 class="text-2xl font-semibold mb-4">{{ $sidebarTitle ?? 'Dashboard' }}</h2>
+                <h1 class="text-2xl font-semibold mb-4">{{ $sidebarTitle ?? 'Admin Dashboard' }}</h1>
                 <ul>
                     <!-- Add your sidebar links here -->
                     <li class="mb-2">
@@ -35,11 +35,18 @@
                     <li class="mb-2"><a href="{{route('admin.locations.index')}}" class="block px-4 py-2 text-white hover:bg-blue-600 {{ request()->routeIs('admin.locations.*') ? 'bg-blue-500' : 'hover:bg-blue-600' }}">Locations</a></li>
                     <li class="mb-2"><a href="{{route('admin.bookings.index')}}" class="block px-4 py-2 text-white hover:bg-blue-600 {{ request()->routeIs('admin.bookings.*') ? 'bg-blue-500' : 'hover:bg-blue-600' }}">Bookings</a></li>
                     <li class="mb-2"><a href="{{route('admin.reviews.index')}}" class="block px-4 py-2 text-white hover:bg-blue-600 {{ request()->routeIs('admin.reviews.*') ? 'bg-blue-500' : 'hover:bg-blue-600' }}">Reviews</a></li>
+                    <li><a href="{{ route('logout') }}"
+                    onclick="event.preventDefault();
+                    document.getElementById('logout-form').submit();"
+                    >Logout</a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                        @csrf
+                    </form></li>
                     <!-- Add more links as needed -->
                 </ul>
             </div>
         </aside>
-       
+
         <!-- Content -->
         <main class="flex-1 p-4">
             @yield('content')

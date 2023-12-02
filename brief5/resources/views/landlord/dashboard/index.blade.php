@@ -805,7 +805,7 @@ body {
 
                         <div class="products-row">
                             <div class="product-cell image">
-                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRx8tA26kZAMZm0Nyc6c5vQ6fXuX5BvrJzwlw&usqp=CAU" alt="{{ $property->name }}">
+                                <img src="{{ asset($property->image) }}" alt="{{ $property->name }}">
                             </div>
                             <div class="product-cell category">
                                 <span class="cell-label">Property Name:</span>{{ $property->name }}
