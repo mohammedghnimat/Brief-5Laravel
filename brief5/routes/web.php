@@ -2,6 +2,15 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LandlordDashboardController;
+use App\Http\Controllers\Admin\AdminBookingController;
+use App\Http\Controllers\Admin\AdminDashboardController;
+use App\Http\Controllers\Admin\AdminLocationController;
+use App\Http\Controllers\Admin\AdminPropertyController;
+use App\Http\Controllers\Admin\AdminPropertyTypeController;
+use App\Http\Controllers\Admin\AdminReviewController;
+use App\Http\Controllers\Admin\AdminRoleController;
+use App\Http\Controllers\Admin\AdminUserController;
+use App\Models\Role;
 
 /*
 |--------------------------------------------------------------------------
@@ -76,3 +85,119 @@ Route::resource('reviews', ReviewController::class);
 
 
 
+
+
+// List users
+Route::get('/admin/users', [AdminUserController::class, 'index'])->name('admin.users.index');
+Route::get('/admin/users/{user}', [AdminUserController::class, 'show'])->name('admin.users.show');
+Route::get('/admin/users/create', [AdminUserController::class, 'create'])->name('admin.users.create');
+Route::post('/admin/users', [AdminUserController::class, 'store'])->name('admin.users.store');
+Route::get('/admin/users/{user}/edit', [AdminUserController::class, 'edit'])->name('admin.users.edit');
+Route::put('/admin/users/{user}', [AdminUserController::class, 'update'])->name('admin.users.update');
+Route::delete('/admin/users/{user}', [AdminUserController::class, 'destroy'])->name('admin.users.destroy');
+
+
+
+
+
+
+
+// Index page to list all roles
+Route::get('/admin/roles', [AdminRoleController::class, 'index'])->name('admin.roles.index');
+Route::get('/admin/roles/{role}', [AdminRoleController::class, 'show'])->name('admin.roles.show');
+Route::get('/admin/roles/create', [AdminRoleController::class, 'create'])->name('admin.roles.create');
+Route::post('/admin/roles', [AdminRoleController::class, 'store'])->name('admin.roles.store');
+Route::get('/admin/roles/{role}/edit', [AdminRoleController::class, 'edit'])->name('admin.roles.edit');
+Route::put('/admin/roles/{role}', [AdminRoleController::class, 'update'])->name('admin.roles.update');
+Route::delete('/admin/roles/{role}', [AdminRoleController::class, 'destroy'])->name('admin.roles.destroy');
+
+
+
+
+
+
+// Index page to list all properties
+Route::get('/admin/properties', [AdminPropertyController::class, 'index'])->name('admin.properties.index');
+Route::get('/admin/properties/{property}', [AdminPropertyController::class, 'show'])->name('admin.properties.show');
+Route::get('/admin/properties/create', [AdminPropertyController::class, 'create'])->name('admin.properties.create');
+Route::post('/admin/properties', [AdminPropertyController::class, 'store'])->name('admin.properties.store');
+Route::get('/admin/properties/{property}/edit', [AdminPropertyController::class, 'edit'])->name('admin.properties.edit');
+Route::put('/admin/properties/{property}', [AdminPropertyController::class, 'update'])->name('admin.properties.update');
+Route::delete('/admin/properties/{property}', [AdminPropertyController::class, 'destroy'])->name('admin.properties.destroy');
+
+
+
+
+// Index page to list all property types
+Route::get('/admin/property_types', [AdminPropertyTypeController::class, 'index'])->name('admin.property_types.index');
+Route::get('/admin/property_types/{propertyType}', [AdminPropertyTypeController::class, 'show'])->name('admin.property_types.show');
+Route::get('admin/property_types/create', [AdminPropertyTypeController::class, 'create'])->name('admin.property_types.create');
+Route::post('/admin/property_types', [AdminPropertyTypeController::class, 'store'])->name('admin.property_types.store');
+Route::get('/admin/property_types/{propertyType}/edit', [AdminPropertyTypeController::class, 'edit'])->name('admin.property_types.edit');
+Route::put('/admin/property_types/{propertyType}', [AdminPropertyTypeController::class, 'update'])->name('admin.property_types.update');
+Route::delete('/admin/property_types/{propertyType}', [AdminPropertyTypeController::class, 'destroy'])->name('admin.property_types.destroy');
+
+
+
+
+// Index page to list all locations
+Route::get('/admin/locations', [AdminLocationController::class, 'index'])->name('admin.locations.index');
+Route::get('/admin/locations/{location}', [AdminLocationController::class, 'show'])->name('admin.locations.show');
+Route::get('/admin/locations/create', [AdminLocationController::class, 'create'])->name('admin.locations.create');
+Route::post('/admin/locations', [AdminLocationController::class, 'store'])->name('admin.locations.store');
+Route::get('/admin/locations/{location}/edit', [AdminLocationController::class, 'edit'])->name('admin.locations.edit');
+Route::put('/admin/locations/{location}', [AdminLocationController::class, 'update'])->name('admin.locations.update');
+Route::delete('/admin/locations/{location}', [AdminLocationController::class, 'destroy'])->name('admin.locations.destroy');
+
+
+
+
+// routes/web.php
+
+
+// Index page to list all bookings
+Route::get('/admin/bookings', [AdminBookingController::class, 'index'])->name('admin.bookings.index');
+Route::get('/admin/bookings/{booking}', [AdminBookingController::class, 'show'])->name('admin.bookings.show');
+Route::get('/admin/bookings/create', [AdminBookingController::class, 'create'])->name('admin.bookings.create');
+Route::post('/admin/bookings', [AdminBookingController::class, 'store'])->name('admin.bookings.store');
+Route::get('/admin/bookings/{booking}/edit', [AdminBookingController::class, 'edit'])->name('admin.bookings.edit');
+Route::put('/admin/bookings/{booking}', [AdminBookingController::class, 'update'])->name('admin.bookings.update');
+Route::delete('/admin/bookings/{booking}', [AdminBookingController::class, 'destroy'])->name('admin.bookings.destroy');
+
+
+
+
+
+
+// Show all reviews
+Route::get('admin/reviews', [AdminReviewController::class, 'index'])->name('admin.reviews.index');
+Route::get('admin/reviews/{review}', [AdminReviewController::class, 'show'])->name('admin.reviews.show');
+Route::get('admin/reviews/create', [AdminReviewController::class, 'create'])->name('admin.reviews.create');
+Route::post('admin/reviews', [AdminReviewController::class, 'store'])->name('admin.reviews.store');
+Route::get('admin/reviews/{review}/edit', [AdminReviewController::class, 'edit'])->name('admin.reviews.edit');
+Route::put('admin/reviews/{review}', [AdminReviewController::class, 'update'])->name('admin.reviews.update');
+Route::delete('admin/reviews/{review}', [AdminReviewController::class, 'destroy'])->name('admin.reviews.destroy');
+
+
+Route::get('/admin/creatings/user',function(){
+    $roles = Role::all();
+    return view('admin/creatings/user',compact('roles'));
+})->name('admin.creatings.user');
+
+Route::get('/admin/creatings/property_types',function(){
+    return view('admin/creatings/property_types');
+})->name('admin.creatings.property_types');
+
+Route::get('/admin/creatings/locations',function(){
+    return view('admin/creatings/locations');
+})->name('admin.creatings.locations');
+
+// Route::get('/admin/dashboard',function(){
+//     return view('/admin/dashboard');
+// })->name('admin.killme');
+
+
+// use App\Http\Controllers\Admin\AdminDashboardController;
+
+// Admin Dashboard
+Route::get('/admin/dashboard', [AdminDashboardController::class, 'statistics'])->name('admin.dashboard.statistics');
