@@ -15,8 +15,8 @@ class DashboardUserController extends Controller
     public function dashboard()
     {
         // Retrieve user's bookings, reviews, and other relevant information
-        // $users = Auth::user();
-        $user = User::first();
+        $user = Auth::user();
+
         return view('user.dashboard', compact('user'));
     }
 
@@ -77,7 +77,8 @@ class DashboardUserController extends Controller
         ]);
 
         // Change user's password
-        $user = Auth::user();
+        $user = User::first();
+
 
         if (Hash::check($request->current_password, $user->password)) {
             $user->password = Hash::make($request->new_password);
@@ -96,7 +97,7 @@ class DashboardUserController extends Controller
 public function bookedProperties()
 {
     // $user = Auth::user(); // Assuming you are using authentication
-    $user = User::first();
+    $user = Auth::user();
 
     // Fetch the bookings along with related properties and users
     $bookings = Booking::select('properties.*', 'bookings.*','bookings.id as booking_id', 'users.*')
@@ -118,7 +119,7 @@ public function delete($id)
 
  public function userReviews()
     {
-        $user = User::first();
+        $user = Auth::user();
        $reviews = Review::where('renter_id', $user->id)->get();
 
         return view('user.reviews', compact('reviews', 'user'));
