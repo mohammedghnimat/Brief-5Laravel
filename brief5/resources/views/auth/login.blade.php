@@ -12,6 +12,9 @@
   <div class="container">
     <input type="checkbox" id="check">
     <div class="login form">
+    <div class="col-8 col-md-8 col-lg-4">
+              <h1 class="mb-0"><a href="{{ route('properties.index') }}" class="text-white h2 mb-0"><strong>Apart<span class="text-primary">.</span></strong></a></h1>
+            </div>
       <header>Login</header>
       <form action="{{ route('login') }}" method="post">
         @csrf

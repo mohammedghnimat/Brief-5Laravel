@@ -13,6 +13,9 @@
     <div class="container">
         <input type="checkbox" id="check">
         <div class="registration form">
+        <div class="col-8 col-md-8 col-lg-4">
+              <h1 class="mb-0"><a href="{{ route('properties.index') }}" class="text-white h2 mb-0"><strong>Apart<span class="text-primary">.</span></strong></a></h1>
+            </div>
             <header>Signup</header>
             <form action="{{ route('sign_up')}}" method="post">
                 @csrf <input type="text" placeholder="Enter your name" name="name">
