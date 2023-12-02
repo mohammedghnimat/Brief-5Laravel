@@ -124,3 +124,5 @@ public function delete($id)
         return view('user.reviews', compact('reviews', 'user'));
     }
 }
+
+// mohammed
