@@ -58,8 +58,7 @@
                 <div class="unit-9-content">
                     <h2>{{ $property->name }}</h2>
                     <span>${{ $property->one_day_price }}/night</span>
-                    <!-- <span> {{ $property->location->name }}</span> -->
-                    <!-- <span>Type:Location: {{ $property->property_type->name }}</span> -->
+   
                 </div>
             </a>
         </div>
@@ -79,7 +78,7 @@
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet, fugit nam obcaecati fuga itaque deserunt officia, error reiciendis ab quod?</p>
     </div>
   </div>
-  
+
   <div class="site-block-retro d-block d-md-flex">
 
     <a href="#" class="col1 unit-9 no-height" data-aos="fade-up" data-aos-delay="100">
@@ -111,12 +110,12 @@
     </div>
 
   </div>
-  
+
 </div>
 </div>
 
-  
-  
+
+
     <div class="site-section block-13">
       <div class="container" data-aos="fade-up">
         <div class="row">
@@ -127,7 +126,7 @@
           </div>
         </div>
         <div class="nonloop-block-13 owl-carousel">
-  
+
           <div class="text-center p-3 p-md-5 bg-white">
             <div class="mb-4">
               <img src="https://media.licdn.com/dms/image/C4D03AQGptFfm3HvREQ/profile-displayphoto-shrink_800_800/0/1524242172852?e=2147483647&v=beta&t=O87Ea3x37BryBstVoSEwmpABkawSKdHs4OGfCjO5uKY" alt="Image" class="w-50 mx-auto img-fluid rounded-circle">
@@ -138,7 +137,7 @@
                 illo, cum sed ea? Ducimus quos, ea?&rdquo;</p>
             </div>
           </div>
-  
+
           <div class="text-center p-3 p-md-5 bg-white">
             <div class="mb-4">
               <img src="https://th.bing.com/th/id/R.4c4dad6f9a7d039e9c20f204cbb51550?rik=MOptyLgYaTvuSw&pid=ImgRaw&r=0" alt="Image" class="w-50 mx-auto img-fluid rounded-circle">
@@ -149,7 +148,7 @@
                 illo, cum sed ea? Ducimus quos, ea?&rdquo;</p>
             </div>
           </div>
-  
+
           <div class="text-center p-3 p-md-5 bg-white">
             <div class="mb-4">
               <img src="https://th.bing.com/th/id/OIP.Tm36oz4KNYa2Fn7VeLmKcAHaHa?rs=1&pid=ImgDetMain" alt="Image" class="w-50 mx-auto img-fluid rounded-circle">
@@ -160,7 +159,7 @@
                 illo, cum sed ea? Ducimus quos, ea?&rdquo;</p>
             </div>
           </div>
-  
+
           <div class="text-center p-3 p-md-5 bg-white">
             <div class="mb-4">
               <img src="https://th.bing.com/th/id/OIP.iwyM_iTPHO1ptw8VMrdlGQHaHa?rs=1&pid=ImgDetMain" alt="Image" class="w-50 mx-auto img-fluid rounded-circle">
@@ -171,7 +170,7 @@
                 illo, cum sed ea? Ducimus quos, ea?&rdquo;</p>
             </div>
           </div>
-  
+
           <div class="text-center p-3 p-md-5 bg-white">
             <div class="mb-4">
               <img src="https://th.bing.com/th/id/OIP.8BXNcJu6neL_XzJ3P1zVEAAAAA?rs=1&pid=ImgDetMain" alt="Image" class="w-50 mx-auto img-fluid rounded-circle">
@@ -182,7 +181,7 @@
                 illo, cum sed ea? Ducimus quos, ea?&rdquo;</p>
             </div>
           </div>
-  
+
           <div class="text-center p-3 p-md-5 bg-white">
             <div class="mb-4">
               <img src="https://d2qp0siotla746.cloudfront.net/img/use-cases/profile-picture/template_0.jpg" alt="Image" class="w-50 mx-auto img-fluid rounded-circle">
@@ -193,11 +192,11 @@
                 illo, cum sed ea? Ducimus quos, ea?&rdquo;</p>
             </div>
           </div>
-  
+
         </div>
       </div>
     </div>
-  
-  
-  
+
+
+
 @endsection

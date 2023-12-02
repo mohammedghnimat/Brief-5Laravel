@@ -38,7 +38,7 @@ class AuthController extends Controller
 
         ]);
 
-        
+
         $request->session()->start();
 
         $userId = Auth::user()->id;
@@ -64,24 +64,24 @@ class AuthController extends Controller
             'email' => 'required|string',
             'password' => 'required|string'
         ]);
-    
+
         if (Auth::attempt($credentials)) {
             // Authentication successful
             $request->session()->start();
-    
+
             $userId = Auth::user()->id;
             $roleId = Auth::user()->role_id;
-    
+
             $request->session()->put('userId', $userId);
             $request->session()->put('roleId', $roleId);
-    
+
             $request->session()->regenerate();
-    
+
             if ($roleId == 1) {
-                return view('locations.index');
+                return  redirect()->route('admin.dashboard.statistics');
                 // return redirect()->route('properties');
             } elseif ($roleId == 2) {
-                return redirect()->route('properties.index');
+                return  redirect()->route('landlord.dashboard.index');
                     // ->withSuccess('You have successfully logged in!')
             } else {
                 return redirect()->route('properties.index');
