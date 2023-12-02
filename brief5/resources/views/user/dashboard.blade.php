@@ -691,7 +691,7 @@ body {
     <div class="account-info">
 
       <div class="account-info-picture">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSW3FL1IhvkYrsFau7n41DgNciHaY6WhzH_qg&usqp=CAU">
+        <img src="{{ asset($user->image)}}">
       </div>
       <div class="account-info-name"><a href="{{ route('user.dashboard',$user->id) }}">{{ $user->name }}</a></div>
       <button class="account-info-more">

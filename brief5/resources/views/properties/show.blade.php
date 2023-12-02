@@ -327,7 +327,8 @@ ul {list-style-type: none;}
 @foreach($reviews as $review)
 <div class="d-flex">
   <div>
-    <img src="{{ $review->renter->image }}" alt="" width="100" height="100" style=" object-fit:cover border-radius:50%">
+    <img src="{{ asset($review->renter->image)}}" alt="" width="100" height="100" style=" object-fit:cover border-radius:50%">
+
   </div>
 <ul>
     <li>

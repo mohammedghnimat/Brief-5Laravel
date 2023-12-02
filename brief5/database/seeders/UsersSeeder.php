@@ -17,10 +17,18 @@ class UsersSeeder extends Seeder
     public function run()
     {
         // Generate 10 user records
-        for ($i = 1; $i <= 20; $i++) {
+        $imageIndices = range(1, 10);
+
+        // Shuffle the array
+        shuffle($imageIndices);
+        for ($i = 0; $i < 10; $i++) {
+            $imageIndex = array_shift($imageIndices);
+
+            // Construct the image path
+            $imagePath = 'images/user/house' . $imageIndex . '.jpg';
             DB::table('users')->insert([
                 'name' => 'User' . $i,
-                'image' => 'image' . $i.'png',
+                'image' =>$imagePath,
                 'email' => 'user' . $i . '@example.com',
                 'email_verified_at' => now(),
                 'password' => Hash::make('password'), // You can change 'password' to the desired default password
