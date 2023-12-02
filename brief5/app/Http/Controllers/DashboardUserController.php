@@ -15,6 +15,7 @@ class DashboardUserController extends Controller
     public function dashboard()
     {
         // Retrieve user's bookings, reviews, and other relevant information
+
         $user = Auth::user();
 
         return view('user.dashboard', compact('user'));
@@ -39,7 +40,7 @@ class DashboardUserController extends Controller
     ]);
 
     // Find the user by ID
-    $user = User::find($id);
+    $user = User::first();
 
     if (!$user) {
         return redirect()->route('user.dashboard')->with('error', 'User not found.');
@@ -127,3 +128,4 @@ public function delete($id)
 }
 
 // mohammed
+//mohammed
