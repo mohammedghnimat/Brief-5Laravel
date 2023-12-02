@@ -13,14 +13,24 @@ class PropertySeeder extends Seeder
      */
     public function run()
     {
-        // Generate 10 property records
-        for ($i = 1; $i <= 10; $i++) {
+        $imageIndices = range(1, 24);
+
+        // Shuffle the array
+        shuffle($imageIndices);
+
+        // Generate 16 property records
+        for ($i = 0; $i < 16; $i++) {
+            $imageIndex = array_shift($imageIndices);
+
+            // Construct the image path
+            $imagePath = 'images/house' . $imageIndex . '.jpg';
+
             DB::table('properties')->insert([
                 'name' => 'Property ' . $i,
-                'image' => 'property_' . $i . '.jpg', // Assuming you have images named property_1.jpg, property_2.jpg, etc.
+                'image' => $imagePath, // Assuming you have images named house1.jpg, house2.jpg, etc.
                 'lessor_id' => rand(1, 10), // Assuming you have users with IDs 1 to 10
                 'property_type_id' => rand(1, 10), // Assuming you have property types with IDs 1 to 10
-                'location_id' => rand(1, 5), // Assuming you have locations with IDs 1 to 10
+                'location_id' => rand(1, 5), // Assuming you have locations with IDs 1 to 5
                 'one_day_price' => rand(50, 500), // Adjust the price range as needed
                 'created_at' => now(),
                 'updated_at' => now(),

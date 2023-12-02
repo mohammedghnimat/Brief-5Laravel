@@ -3,7 +3,7 @@
 
 <div class="container">
       <div class="featured-property-half d-flex">
-        <div class="image " style="background-image: url('{{ $property->image }}')"></div>
+        <div class="image" style="background-image: url('{{ asset($property->image) }}');"></div>
         <div class="text">
           @if (session('error'))
          <div class="alert alert-danger">{{ session('error') }}</div>
@@ -17,13 +17,13 @@
             <li>Category: <strong>{{ $property->propertyType->name }}</strong></li>
             <li>Lunch Date: {{ $property->created_at }}<strong></strong></li>
           </ul>
-          
+
           <form method="POST" action="{{ route('bookings.store') }}">
               @csrf
               <input type="hidden" name='property_id' value='{{$property->id}}'>
               <label for="start_date">From:</label>
               <input id="start_date" type="date" name="start_date" required min="<?php echo date('Y-m-d'); ?>" max="2099-12-31" oninput="disableBookedDates()"/>
-              
+
               <label for="end_date">To:</label>
               <input id="end_date" type="date" name="end_date" required min="<?php echo date('Y-m-d'); ?>" max="2099-12-31" />
             <br>
@@ -66,7 +66,7 @@
 
   @while($currentDate <= $lastDayOfMonth)
     <li style="{{ in_array($currentDate->toDateString(), $bookedDates) ? 'background-color: #ccc;' : '' }}">
-      {{ $currentDate->format('d') }} 
+      {{ $currentDate->format('d') }}
       <br>
       {{ in_array($currentDate->toDateString(), $bookedDates) ? 'Booked' : 'Available' }}
     </li>
@@ -251,7 +251,7 @@ ul {list-style-type: none;}
          color: #c59b08;
          }
 </style>
- 
+
 @if(!empty($value->star_rating))
   <div class="container">
       <div class="row">
@@ -336,7 +336,7 @@ ul {list-style-type: none;}
             @for ($i = 0; $i < $review->rating; $i++)
             <span style="color: orange;">★</span>
             @endfor
-            
+
         </p>
         <p>Comment: {{ $review->comment }}</p>
     </li>

@@ -15,18 +15,18 @@ class ReviewSeeder extends Seeder
     public function run()
     {
         // Generate 10 review records
-        for ($i = 1; $i <= 10; $i++) {
+        for ($i = 1; $i <= 100; $i++) {
             $renterId = DB::table('users')
                 ->where('role_id', 3) // Assuming role_id 3 represents renters
                 ->inRandomOrder()
                 ->value('id');
-        
+
             if (!$renterId) {
                 // Log an error or handle the case where there is no renter with role_id = 3
                 Log::error('No renter found with role_id = 3');
                 continue;
             }
-        
+
             DB::table('reviews')->insert([
                 'property_id' => rand(1, 10), // Assuming you have properties with IDs 1 to 10
                 'renter_id' => $renterId,
