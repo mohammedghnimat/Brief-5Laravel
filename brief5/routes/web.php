@@ -12,6 +12,16 @@ use App\Http\Controllers\Admin\AdminRoleController;
 use App\Http\Controllers\Admin\AdminUserController;
 use App\Models\Role;
 use App\Http\Controllers\DashboardUserController;
+use App\Http\Controllers\RoleController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\PropertyController;
+use App\Http\Controllers\PropertyTypeController;
+use App\Http\Controllers\LocationController;
+use App\Http\Controllers\BookingController;
+use App\Http\Controllers\ReviewController;
+use App\Http\Middleware\CheckRoleMiddleware;
+use App\Http\Controllers\AuthController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -29,13 +39,6 @@ Route::get('/', function () {
 });
 // routes/web.php
 
-use App\Http\Controllers\RoleController;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\PropertyController;
-use App\Http\Controllers\PropertyTypeController;
-use App\Http\Controllers\LocationController;
-use App\Http\Controllers\BookingController;
-use App\Http\Controllers\ReviewController;
 
 // Roles
 Route::resource('roles', RoleController::class);
@@ -44,7 +47,7 @@ Route::resource('roles', RoleController::class);
 Route::resource('users', UserController::class);
 
 // Properties
-Route::resource('properties', PropertyController::class);
+Route::resource('properties', PropertyController::class, [ 'except' => [ 'index']]);
 
 // PropertyTypes
 Route::resource('property_types', PropertyTypeController::class);
@@ -53,7 +56,7 @@ Route::resource('property_types', PropertyTypeController::class);
 Route::resource('locations', LocationController::class);
 
 // Bookings
-Route::resource('bookings', BookingController::class);
+// Route::resource('bookings', BookingController::class);
 
 // Reviews
 Route::resource('reviews', ReviewController::class);
@@ -222,3 +225,27 @@ Route::get('/admin/dashboard', [AdminDashboardController::class, 'statistics'])-
     Route::get('/user/booked-properties', [DashboardUserController::class,'bookedProperties'])->name('user.booking');
     Route::delete('/user/bookings/{id}', [DashboardUserController::class,'delete'])->name('user.booking.delete');
     Route::get('/user/reviews', [DashboardUserController::class, 'userReviews'])->name('user.reviews');
+
+
+    //home
+    Route::get('/',  PropertyController::class.'@index')->name('properties.index');
+
+
+    //auth
+Route::controller(AuthController::class)->group(function() {
+    Route::get('/register', 'register')->name('register');
+    Route::post('/sign_up', 'sign_up')->name('sign_up');
+    Route::get('/login1', 'login1')->name('login1');
+    Route::post('/login', 'login')->name('login');
+    Route::post('/logout', 'logout')->name('logout');
+});
+
+Route::middleware(['auth','web', CheckRoleMiddleware::class])->group(function () {
+    //only admin page
+});
+
+//booking only for login users
+Route::middleware('auth')->group(function () {
+    Route::resource('bookings', BookingController::class);
+
+});
