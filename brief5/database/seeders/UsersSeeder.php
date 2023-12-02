@@ -17,7 +17,7 @@ class UsersSeeder extends Seeder
     public function run()
     {
         // Generate 10 user records
-        for ($i = 1; $i <= 10; $i++) {
+        for ($i = 1; $i <= 20; $i++) {
             DB::table('users')->insert([
                 'name' => 'User' . $i,
                 'image' => 'image' . $i.'png',
