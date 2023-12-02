@@ -14,7 +14,7 @@
             <li class="text-black">Property Name: <strong class="text-black">{{ $property->name }}</strong></li>
             <li>Price/day: <strong>{{ $property->one_day_price }}JD</strong></li>
             <li>Location: <strong>{{ $property->location->name }}</strong></li>
-            <li>Category: <strong>{{ $property->property_type->name }}</strong></li>
+            <li>Category: <strong>{{ $property->propertyType->name }}</strong></li>
             <li>Lunch Date: {{ $property->created_at }}<strong></strong></li>
           </ul>
           

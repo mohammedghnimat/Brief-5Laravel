@@ -90,6 +90,10 @@ Route::resource('reviews', ReviewController::class);
 
 
 
+Route::middleware(['auth','web', CheckRoleMiddleware::class])->group(function () {
+    //only admin page
+    
+
 
 // List users
 Route::get('/admin/users', [AdminUserController::class, 'index'])->name('admin.users.index');
@@ -99,10 +103,6 @@ Route::post('/admin/users', [AdminUserController::class, 'store'])->name('admin.
 Route::get('/admin/users/{user}/edit', [AdminUserController::class, 'edit'])->name('admin.users.edit');
 Route::put('/admin/users/{user}', [AdminUserController::class, 'update'])->name('admin.users.update');
 Route::delete('/admin/users/{user}', [AdminUserController::class, 'destroy'])->name('admin.users.destroy');
-
-
-
-
 
 
 
@@ -208,7 +208,7 @@ Route::get('/admin/dashboard', [AdminDashboardController::class, 'statistics'])-
 // <<<<<<< HEAD
 ///////////////////////////////////////////////
 //
-
+});
 
 
 // malek is the best
@@ -238,10 +238,7 @@ Route::controller(AuthController::class)->group(function() {
     Route::get('/login1', 'login1')->name('login1');
     Route::post('/login', 'login')->name('login');
     Route::post('/logout', 'logout')->name('logout');
-});
-
-Route::middleware(['auth','web', CheckRoleMiddleware::class])->group(function () {
-    //only admin page
+    Route::get('/dash', 'dash')->name('dash');
 });
 
 //booking only for login users

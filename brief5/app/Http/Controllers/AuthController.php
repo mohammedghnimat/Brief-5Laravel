@@ -94,6 +94,30 @@ class AuthController extends Controller
             ])->onlyInput('email');
         }
     }
+
+    public function dash()
+    {
+        // dd(Auth::user());
+        if(Auth::check())
+        {
+            $roleId = session()->get('roleId');
+            if ($roleId == 1) {
+                return  redirect()->route('admin.dashboard.statistics');
+                // return redirect()->route('properties');
+            } elseif ($roleId == 2) {
+                return  redirect()->route('landlord.dashboard.index');
+                    // ->withSuccess('You have successfully logged in!')
+            } else {
+                return redirect()->route('user.dashboard');
+                // return redirect()->route('home');
+            }
+        }
+        
+        return redirect()->route('login')
+            ->withErrors([
+            'email' => 'Please login to access the dashboard.',
+        ])->onlyInput('email');
+    } 
     /////////////////////////////
     public function logout(Request $request)
     {
