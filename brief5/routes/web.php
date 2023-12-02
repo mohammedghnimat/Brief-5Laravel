@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\AdminReviewController;
 use App\Http\Controllers\Admin\AdminRoleController;
 use App\Http\Controllers\Admin\AdminUserController;
 use App\Models\Role;
+use App\Http\Controllers\DashboardUserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -203,9 +204,21 @@ Route::get('/admin/creatings/locations',function(){
 Route::get('/admin/dashboard', [AdminDashboardController::class, 'statistics'])->name('admin.dashboard.statistics');
 // <<<<<<< HEAD
 ///////////////////////////////////////////////
-// 
+//
 
 
 
 // malek is the best
 // >>>>>>> fc534728eba5825335562cf4bb5ebdedd0dd1510
+
+
+
+// this the dashboarduser cotroller
+
+    Route::get('/dashboard', [DashboardUserController::class, 'dashboard'])->name('user.dashboard');
+    Route::get('/user/profile/{id}', [DashboardUserController::class, 'profile'])->name('user.profile');
+    Route::put('/user/profile/update/{id}', [DashboardUserController::class, 'updateProfile'])->name('user.profile.update');
+    Route::post('/change-password', [DashboardUserController::class, 'changePassword'])->name('user.changePassword');
+    Route::get('/user/booked-properties', [DashboardUserController::class,'bookedProperties'])->name('user.booking');
+    Route::delete('/user/bookings/{id}', [DashboardUserController::class,'delete'])->name('user.booking.delete');
+    Route::get('/user/reviews', [DashboardUserController::class, 'userReviews'])->name('user.reviews');
