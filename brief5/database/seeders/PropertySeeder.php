@@ -14,7 +14,7 @@ class PropertySeeder extends Seeder
     public function run()
     {
         // Generate 10 property records
-        for ($i = 1; $i <= 10; $i++) {
+        for ($i = 1; $i <= 20; $i++) {
             DB::table('properties')->insert([
                 'name' => 'Property ' . $i,
                 'image' => 'property_' . $i . '.jpg', // Assuming you have images named property_1.jpg, property_2.jpg, etc.
