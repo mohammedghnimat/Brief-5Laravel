@@ -125,7 +125,7 @@ class LandlordDashboardController extends Controller
 
         $user = auth()->user();
 
-        $reviews = Review::select('reviews.comment', 'users.name as renter_name', 'properties.name as property_name', 'reviews.rating')
+        $reviews = Review::select('reviews.comment', 'users.name as renter_name', 'properties.name as property_name', 'reviews.rating','users.image as image')
             ->join('users', 'reviews.renter_id', '=', 'users.id')
             ->join('properties', 'reviews.property_id', '=', 'properties.id')
             ->where('properties.lessor_id', $user->id)

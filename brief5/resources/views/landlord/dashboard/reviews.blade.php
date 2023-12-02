@@ -722,20 +722,13 @@ body {
                     <div class="card mb-4">
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-md-2">
-                                    <!-- Reviewer image (if available) -->
-                                    {{-- Replace 'user_image_path' with the actual user image path --}}
-                                    @if($user->image_path)
-                                        <img src="{{ $user->image_path }}" class="img img-rounded img-fluid"/>
-                                    @else
-                                        <!-- Default image if user image is not available -->
-                                        <img src="https://image.ibb.co/jw55Ex/def_face.jpg" class="img img-rounded img-fluid"/>
-                                    @endif
+                                <div class="col-md-4">
+                                        <img src="{{asset($review->image) }}" class="img img-rounded img-fluid"/>
                                 </div>
-                                <div class="col-md-10">
-                                    <!-- Review content -->
+                                <div class="col-md-8">
+
                                     <p>
-                                        <a class="float-left" href="{{ $review->reviewer_profile_link }}"><strong>{{ $review->renter_name }}</strong></a>
+                                        <a class="float-left" href="#"><strong>{{ $review->renter_name }}</strong></a>
                                         <!-- Rating stars -->
                                         @for($i = 5; $i >= 1; $i--)
                                             @if($i <= $review->rating)
@@ -746,9 +739,9 @@ body {
                                         @endfor
                                     </p>
                                     <div class="clearfix"></div>
-                                    <!-- Review text -->
+
                                     <p>{{ $review->comment }}</p>
-                                    <!-- Action buttons (Reply and Like) -->
+
 
                                 </div>
                             </div>

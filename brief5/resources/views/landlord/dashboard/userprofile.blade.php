@@ -513,6 +513,12 @@ body {
   border-radius: 50%;
   margin-right: 4px;
 }
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+    margin: auto;
+    padding: 20px 0 0 0;
+}
 .status.active {
   color: #2ba972;
   background-color: rgba(43, 169, 114, 0.2);
@@ -714,6 +720,9 @@ body {
         <div class="products-header">
             <div class="container mx-auto my-8">
                 <div class="max-w-md mx-auto bg-white rounded-md overflow-hidden shadow-lg">
+                    <div class="col-md-12 cenetr">
+                        <img src="{{asset($user->image) }}" class="img img-rounded img-fluid"/>
+                    </div>
                     <div class="bg-teal-500 p-6">
                         <h2 class="text-white text-3xl font-extrabold">{{ $user->name }}</h2>
                     </div>
