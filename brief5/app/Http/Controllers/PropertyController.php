@@ -62,7 +62,8 @@ class PropertyController extends Controller
         // Retrieve all dates between the start and end booking dates
         $startDate = new DateTime($booking->start_date);
         $endDate = new DateTime($booking->end_date);
-        $endDate->modify('+1 day');
+        $endDate->modify('+1
+         day');
     
         $interval = new DateInterval('P1D'); // 1 day interval
         $dateRange = new DatePeriod($startDate, $interval, $endDate);

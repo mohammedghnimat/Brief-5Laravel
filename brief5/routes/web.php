@@ -72,7 +72,7 @@ Route::resource('reviews', ReviewController::class);
 
 
 
-// Landlord Dashboard Routes
+// Landlord Dashboard Routes//add middleware
 
     Route::get('/landlord/dashboard', [LandlordDashboardController::class, 'index'])->name('landlord.dashboard.index');
     Route::get('/landlord/dashboard/create', [LandlordDashboardController::class, 'create'])->name('landlord.dashboard.create');

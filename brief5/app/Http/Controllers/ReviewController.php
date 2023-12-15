@@ -28,12 +28,10 @@ class ReviewController extends Controller
         ]);
         // dd($request);
 
-        // $user_id=;
 
         // Assuming the currently authenticated user is the renter
         $review = Review::create([
             'property_id' => $request->input('property_id'),
-            // 'renter_id' => $user_id,
             'renter_id' => auth()->id(),
             'rating' => $request->input('rating'),
             'comment' => $request->input('comment'),
