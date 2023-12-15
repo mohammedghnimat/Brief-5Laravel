@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,700,900|Oswald:400,700"> 
+
     <title>{{ $title ?? 'Admin Dashboard' }}</title>
 </head>
 <body class="bg-gray-100">
@@ -11,7 +13,7 @@
     <!-- Navbar -->
     <nav class="bg-blue-500 p-4">
         <div class="container mx-auto flex justify-between items-center">
-            <div class="text-white font-semibold text-lg">{{ $navbarTitle ?? 'Apart' }}</div>
+            <div class="text-white font-bold text-lg"><a href="{{ route('properties.index') }}">.Apart</a></div>
             <!-- Add your navbar items or user information here -->
         </div>
     </nav>
@@ -21,7 +23,7 @@
         <!-- Sidebar -->
         <aside class="bg-blue-400 text-white w-64 min-h-screen">
             <div class="">
-                <h1 class="text-2xl font-semibold mb-4">{{ $sidebarTitle ?? 'Admin Dashboard' }}</h1>
+                <h1 class="text-2xl font-semibold ml-2 mb-4">{{ $sidebarTitle ?? 'Admin Dashboard' }}</h1>
                 <ul>
                     <!-- Add your sidebar links here -->
                     <li class="mb-2">
@@ -35,7 +37,7 @@
                     <li class="mb-2"><a href="{{route('admin.locations.index')}}" class="block px-4 py-2 text-white hover:bg-blue-600 {{ request()->routeIs('admin.locations.*') ? 'bg-blue-500' : 'hover:bg-blue-600' }}">Locations</a></li>
                     <li class="mb-2"><a href="{{route('admin.bookings.index')}}" class="block px-4 py-2 text-white hover:bg-blue-600 {{ request()->routeIs('admin.bookings.*') ? 'bg-blue-500' : 'hover:bg-blue-600' }}">Bookings</a></li>
                     <li class="mb-2"><a href="{{route('admin.reviews.index')}}" class="block px-4 py-2 text-white hover:bg-blue-600 {{ request()->routeIs('admin.reviews.*') ? 'bg-blue-500' : 'hover:bg-blue-600' }}">Reviews</a></li>
-                    <li><a href="{{ route('logout') }}"
+                    <li class="mb-2 ml-3"><a href="{{ route('logout') }}"
                     onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();"
                     >Logout</a>

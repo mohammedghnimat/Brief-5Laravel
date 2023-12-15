@@ -746,7 +746,7 @@ body {
       </div>
 </div>
 <div class="card" style="width: 25%;">
-    <img src="{{ asset('storage/'.$user->image) }}" class="card-img-top" alt="{{ $user->image }}">
+    <img src="{{ asset($user->image) }}" class="card-img-top" alt="{{ $user->image }}">
     <div class="card-body">
         <h5 class="card-title">{{ $user->name }}</h5>
         <p class="card-text">{{ $user->email }}</p>
